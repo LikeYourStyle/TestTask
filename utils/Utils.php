@@ -1,11 +1,4 @@
 <?php
-/**
- * 1-я страница - 5 продуктов
- * 2-я - с 6 по 10
- * 3-я - с 11 по 15 ...
- *  5*(2-1)+1
- * LIMIT $perPage*($page-1)+1, $itemsCount -
- */
 
 class Utils
 {
@@ -34,7 +27,7 @@ class Utils
         for ($i = 2; $i <= $pages - 1; $i++) {
             $pager .= "<li><a href='/?page=" . $i . $additional_href . "' data-ng-click='reloadPage(" . $i . ")'>" . $i . "</a></li>";
         }
-        $pager .= "<li><a href='/?page=" . $i . $additional_href . "' data-ng-click='reloadPage(" . $i . ")' aria-label='Next'>Конец <span aria-hidden='true'>&raquo;</span></a></li>";
+        $pager .= "<li><a href='/?page=" . $pages . $additional_href . "' data-ng-click='reloadPage(" . $i . ")' aria-label='Next'>Конец <span aria-hidden='true'>&raquo;</span></a></li>";
         $pager .= "</ul>
                    </nav>";
 

@@ -57,7 +57,8 @@ class IndexController extends Controller
 
     public function makeTaskPager($allProducts, $totalPages)
     {
-
+        if (isset($_GET['page']))
+            $_GET['page'] = strip_tags(trim($_GET['page']));
         if (!isset($_GET['page']) || intval($_GET['page']) == 0 || intval($_GET['page']) == 1 || intval($_GET['page']) < 0) {
             $pageNumber = 1;
             $leftLimit = 0;

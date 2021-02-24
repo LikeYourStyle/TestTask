@@ -13,31 +13,17 @@ app.controller("mainController", function ($scope, $window, $http) {
     $scope.reloadPage = function (page) {
         $http({
             method: "GET",
-            url: "http://localhost/",
+            url: "/",
             params: {page: page}
         }).then(function (result) {
             $window.location.reload();
         })
     }
 
-    function replaceGetParams(key, value) {
-        key = encodeURIComponent(key);
-        value = encodeURIComponent(value);
-        var s = document.location.search;
-        var kvp = key + "=" + value;
-        var r = new RegExp("(&|\\?)" + key + "=[^\&]*");
-        s = s.replace(r, "$1" + kvp);
-        if (!RegExp.$1) {
-            s += (s.length > 0 ? '&' : '?') + kvp;
-        }
-        ;
-        document.location.search = s;
-    }
-
     $scope.getInfoByTaskId = function (id) {
         $http({
             method: "GET",
-            url: "http://localhost/task/getTask",
+            url: "/task/getTask",
             params: {id: id}
         }).then(function (result) {
             $scope.taskId = result.data.id;
@@ -51,7 +37,7 @@ app.controller("mainController", function ($scope, $window, $http) {
         $scope.taskDone = Number(angular.element("#taskDone").is(":checked"));
         $http({
             method: "POST",
-            url: "http://localhost/task/saveTask",
+            url: "/task/saveTask",
             data: $.param({id: $scope.taskId, content: $scope.taskContent, is_done: $scope.taskDone}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (result) {
@@ -73,7 +59,7 @@ app.controller("mainController", function ($scope, $window, $http) {
 
         $http({
             method: "POST",
-            url: "http://localhost/task/addTask",
+            url: "/task/addTask",
             data: $.param({content: $scope.newTaskContent, email: $scope.newTaskEmail, user: $scope.newTaskUser}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (result) {
