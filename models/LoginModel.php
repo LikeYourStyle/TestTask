@@ -7,7 +7,7 @@ class LoginModel extends Model
     {
 
         // затычка
-        if ($login == 'main' && $password == md5('123')) {
+        if ($login == 'admin' && $password == md5('123')) {
             return true;
         } else {
             return false;
